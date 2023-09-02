@@ -31,7 +31,7 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 
 #define all(x) (x).begin(), (x).end()
 
-int nxt() {
+int input() {
     int x;
     cin >> x;
     return x;
@@ -40,6 +40,25 @@ int nxt() {
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
+
+    int n = input();
+    vector<int> a(n); 
+    generate(all(a), input); 
+
+    sort(all(a)); 
+
+    int d = 0; 
+
+    debug(a); 
+    for(int i = 1; i < n; i++){
+        if(a[i] != a[i-1]){
+            d++;
+        }
+    } 
+
+    cout << d + 1 << endl; 
+
+
 
     return 0; 
 }

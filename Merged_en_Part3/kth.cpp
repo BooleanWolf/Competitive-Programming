@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 void __print(int x) {cerr << x;}
@@ -29,17 +28,57 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define debug(x...)
 #endif
 
-#define all(x) (x).begin(), (x).end()
-
-int nxt() {
-    int x;
-    cin >> x;
-    return x;
-}
-
 int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    
+    int n, q;
+    cin >> n >> q; 
 
-    return 0; 
+    map<int, vector<int>> mp; 
+
+    for(int i = 0; i < n; i++){
+
+        int d;
+        cin >> d;
+
+        if(mp.count(d) == 0){
+            vector<int> a{i+1}; 
+            mp[d] = a; 
+        }
+        else{
+            mp[d].push_back(i+1); 
+        }
+
+    }
+
+           
+    // for(auto k : mp){
+    //     cout << k.first << endl;
+    //     debug(k.second);
+    // }
+
+
+    while(q--){
+        int k, l;
+        cin >> k >> l;
+
+        if(mp.count(k)){
+            debug(mp[k]);
+            if(mp[k].size() >= l){
+                cout << mp[k][l-1] << endl; 
+            }
+            else{
+                cout << -1 << endl;
+            }
+        }
+        else{
+            cout << -1 << endl;
+        }
+        
+    }
+ 
 }
+
+
+
+
+

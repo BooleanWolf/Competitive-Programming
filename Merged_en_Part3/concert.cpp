@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 void __print(int x) {cerr << x;}
@@ -29,17 +28,32 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define debug(x...)
 #endif
 
-#define all(x) (x).begin(), (x).end()
-
-int nxt() {
-    int x;
-    cin >> x;
-    return x;
-}
-
 int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
+    long long int n, m; 
+    cin >> n >> m; 
 
-    return 0; 
+    multiset<long long int> s; 
+
+
+    for(int i = 0; i < n; i++){
+        long long int d;
+        cin >> d;
+        s.insert(d); 
+    }
+    
+    debug(s); 
+
+    while(m--){
+        long long int e;
+        cin >> e;
+        auto it = s.upper_bound(e); 
+        if(it != s.begin()){
+            cout << *(--it) << endl;
+            s.erase(it); 
+        }
+        else{
+            cout << -1 << endl; 
+        }
+    }
+
 }

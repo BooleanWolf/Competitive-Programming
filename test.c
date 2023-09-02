@@ -30,4 +30,5 @@ int decimal_to_binary(int n)
         printf("%d",bin[j]);
     }
 
+    
 }

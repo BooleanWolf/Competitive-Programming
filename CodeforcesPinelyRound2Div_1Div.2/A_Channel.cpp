@@ -1,5 +1,6 @@
+// time-limit: 1000
+// problem-url: https://codeforces.com/contest/1863/problem/A
 #include <bits/stdc++.h>
-
 using namespace std;
 
 void __print(int x) {cerr << x;}
@@ -29,17 +30,54 @@ void _print(T t, V... v) {__print(t); if (sizeof...(v)) cerr << ", "; _print(v..
 #define debug(x...)
 #endif
 
-#define all(x) (x).begin(), (x).end()
+void solve() {
+    int n, a, q;
+    cin >> n >> a >> q;
+     
+    string s;
+    cin >> s;
 
-int nxt() {
-    int x;
-    cin >> x;
-    return x;
+    int state = a;
+    int state2 = a;  
+
+    if(n == a){
+        cout << "YES" << endl;
+        return; 
+    }
+
+    for(char c : s){
+        debug(c); 
+        if(c == '-'){
+            state2 -= 1;
+            debug(state, state2); 
+        }
+        if(c == '+'){
+            state += 1;
+            state2 += 1; 
+            debug(state, state2 );
+        }
+    }
+
+    if(state >= n and state2 >= n){
+        cout << "YES" << endl;
+    }
+    else if ((state >= n and state2 < n) or (state < n and state2 >= n)){
+        cout << "MAYBE" << endl; 
+    }
+    else {
+        cout << "NO" << endl; 
+    }
+
+    // debug(state); 
 }
 
-int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-
-    return 0; 
+int main() {
+    ios_base::sync_with_stdio(0);
+    cin.tie(0); cout.tie(0);
+    int tc = 1;
+    cin >> tc;
+    for (int t = 1; t <= tc; t++) {
+        // cout << "Case #" << t << ": ";
+        solve();
+    }
 }
